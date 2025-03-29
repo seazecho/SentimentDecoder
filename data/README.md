@@ -42,7 +42,7 @@ The renamed datasets are hosted in a single Google Drive folder with three subfo
 ### How to Download
 1. Open the [Google Drive](https://drive.google.com/drive/folders/1ZzjpMCv32hJtX5MvHBBSkRJ0vr9x4Lsw?usp=sharing).
 2. Download the entire folder or individual subfolders (`RAVDESS`, `SAVEE_renamed`, `TESS_renamed`).
-3. update `DATASET_PATH` in `SentimentDecoder.ipynb` to point to their location by downloading and uploading it your drive and mounting that drive in CoLab if you're using that.
+3. Update `DATASET_PATH` in `SentimentDecoder.ipynb` to point to their location by downloading and uploading it your drive and mounting that drive in CoLab if you're using that.
 
 ## Usage in the Project
 - The code in `SentimentDecoder.ipynb` expects `.wav` files in a directory specified by `DATASET_PATH`.
