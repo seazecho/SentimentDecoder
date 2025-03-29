@@ -1,7 +1,4 @@
 # SentimentDecoder
-A Speech Emotion Recognition model using SVM and audio feature extraction.
-
-# SentimentDecoder
 A Speech Emotion Recognition (SER) model that classifies emotions from audio files using machine learning.
 
 ## Overview
