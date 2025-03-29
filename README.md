@@ -15,9 +15,9 @@ The core workflow includes feature extraction from audio signals, model training
 ## Methodology
 ### 1. Dataset Preparation
 Three datasets were combined and renamed for consistency:
-- **RAVDESS**: 1440 audio files from 24 actors, covering 8 emotions.
+- **RAVDESS**: 1,440 audio files from 24 actors, covering 8 emotions.
 - **SAVEE**: 480 audio files from 4 male speakers, mapped to the same emotions.
-- **TESS**: 2800 audio files from 2 female speakers, aligned to RAVDESS labels.
+- **TESS**: 4,001 audio files from 2 female speakers, aligned to RAVDESS labels.
 
 **Naming Convention**: Files were renamed to `03-01-01-...wav`, where `01` (third number) is the emotion label (01-08). See `data/README.md` for details.
 
