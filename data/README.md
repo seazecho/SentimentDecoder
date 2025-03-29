@@ -33,7 +33,7 @@ Filenames follow this format: `03-01-01-...wav`
 ## Accessing the Datasets
 The renamed datasets are hosted in a single Google Drive folder with three subfolders:
 - **Main Folder**: "SentimentDecoder Datasets"  
-  - **Link**: [Insert Google Drive Link Here](https://drive.google.com/drive/folders/1ZzjpMCv32hJtX5MvHBBSkRJ0vr9x4Lsw?usp=sharing)
+  - **Link**: [Google Drive Link Here](https://drive.google.com/drive/folders/1ZzjpMCv32hJtX5MvHBBSkRJ0vr9x4Lsw?usp=sharing)
   - **Subfolders**:
     - `RAVDESS/`: Contains all RAVDESS audio files.
     - `SAVEE_renamed/`: Contains all SAVEE audio files.
