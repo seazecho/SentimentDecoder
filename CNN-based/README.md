@@ -57,15 +57,14 @@ The project extracts Mel-spectrograms from audio files, normalizes them, and tra
 
 #### PROJECT STRUCTURE
 - **`CNN_4_Datasets_No(Calm_&_Surprised)_V2_Latest.ipynb`**: Main notebook with code and results.  
-- **`images` FOLDER**: Contains training visualizations (`accuracy.png`, `confusion_matrix.png`, `epochs.png`).  
-- **`X_mel.npy` AND `y_mel.npy`**: Saved feature matrix and labels.  
+- **`these images** contains training visualizations (`accuracy.png`, `confusion_matrix.png`, `epochs.png`).  
 - **`cnn_model.h5`**: Trained model (download from Google Drive link).
 
 #### USAGE
 Run the notebook to train or use the `predict_emotion` function with new audio files. Update the `DATASET_PATH` to your local dataset location after downloading.
 
 #### NOTES
-- **SIZE**: Datasets (~1.5GB) and model (~100MB) are hosted externally.  
+- **SIZE**: Datasets (~1.6GB) and model (~60MB) are hosted externally.  
 - **RENAMING**: Files were manually aligned with RAVDESS labels.  
 - **LICENSE**: Check original dataset terms (typically research-only).
 
@@ -74,5 +73,3 @@ Run the notebook to train or use the `predict_emotion` function with new audio f
 - Test with augmented data for "calm" and "surprised."  
 - Explore deeper CNN architectures.
 
-#### CONTRIBUTION
-Feedback and pull requests are welcome on GitHub. Focus on technical improvements!
