@@ -1,26 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class About extends StatelessWidget {
-//   const About({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         centerTitle: true,
-//         title: const Text(
-//           "About",
-//           style: TextStyle(
-//             fontSize: 20,
-//             color: Color.fromARGB(255, 0, 171, 228),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -52,7 +29,6 @@ class About extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // App Logo
             Center(
               child: Container(
                 width: 120,
@@ -79,7 +55,6 @@ class About extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // App Name and Version
             const Center(
               child: Text(
                 "SentimentDecoder",
@@ -101,7 +76,6 @@ class About extends StatelessWidget {
             ),
             const SizedBox(height: 32),
 
-            // App Description
             const Card(
               elevation: 2,
               child: Padding(
@@ -140,7 +114,6 @@ class About extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // How It Works
             const Card(
               elevation: 2,
               child: Padding(
@@ -166,7 +139,6 @@ class About extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Developer Info
             Card(
               elevation: 2,
               child: Padding(
@@ -222,13 +194,13 @@ class About extends StatelessWidget {
                           IconButton(
                             icon: const Icon(Icons.email),
                             onPressed: () {
-                              _launchURL('mailto:jane.smith@example.com');
+                              _launchURL('');
                             },
                           ),
                           IconButton(
                             icon: const Icon(Icons.link),
                             onPressed: () {
-                              _launchURL('https://example.com/janesmith');
+                              _launchURL('');
                             },
                           ),
                         ],
@@ -248,13 +220,13 @@ class About extends StatelessWidget {
                           IconButton(
                             icon: const Icon(Icons.email),
                             onPressed: () {
-                              _launchURL('mailto:jane.smith@example.com');
+                              _launchURL('');
                             },
                           ),
                           IconButton(
                             icon: const Icon(Icons.link),
                             onPressed: () {
-                              _launchURL('https://example.com/janesmith');
+                              _launchURL('');
                             },
                           ),
                         ],
@@ -274,13 +246,13 @@ class About extends StatelessWidget {
                           IconButton(
                             icon: const Icon(Icons.email),
                             onPressed: () {
-                              _launchURL('mailto:jane.smith@example.com');
+                              _launchURL('');
                             },
                           ),
                           IconButton(
                             icon: const Icon(Icons.link),
                             onPressed: () {
-                              _launchURL('https://example.com/janesmith');
+                              _launchURL('');
                             },
                           ),
                         ],
@@ -292,7 +264,6 @@ class About extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Contact and Support
             Card(
               elevation: 2,
               child: Padding(
@@ -314,7 +285,7 @@ class About extends StatelessWidget {
                       title: const Text("Email Support"),
                       subtitle: const Text("projectser2024@gmail.com"),
                       onTap: () {
-                        _launchURL('mailto:support@sentimentdecoder.com');
+                        _launchURL('');
                       },
                     ),
                     ListTile(
@@ -340,7 +311,6 @@ class About extends StatelessWidget {
             ),
             const SizedBox(height: 32),
 
-            // Legal
             const Center(
               child: Text(
                 "© 2025 SentimentDecoder. All rights reserved.",
