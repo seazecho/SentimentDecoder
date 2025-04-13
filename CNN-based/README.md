@@ -1,4 +1,4 @@
-# CNN-Based Emotion Recognition From Audio (Ver.II)
+# CNN-Based Speech Emotion Recognition From Audio (Ver.II)
 
 This repository, hosted under `SentimentDecoder/CNN-based/`, contains the Jupyter notebook `CNN_4_Datasets_No(Calm_&_Surprised)_V2_Latest.ipynb`, which implements a Convolutional Neural Network (CNN) for Speech Emotion Recognition (SER). This project builds on previous SVM-based work, advancing to a CNN trained on a combined dataset from RAVDESS, SAVEE, TESS, and CREMA-D, excluding "calm" and "surprised" emotions to focus on distinct emotional patterns. The trained model and resources are available for exploration and further development.
 
