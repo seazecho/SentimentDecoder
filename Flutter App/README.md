@@ -25,8 +25,5 @@ The application is designed to operate with a locally hosted backend, utilizing 
 - The `scaler.pkl` and `ser_model.pkl` files are critical assets that must be securely managed. Avoid exposing these files publicly and consider encrypting them in a production environment to protect intellectual property and ensure data privacy.
 - Ngrok configuration requires careful management of the generated URLs. Update the app's backend endpoint in the code (e.g., within `ser.dart`) to match the ngrok URL each time a new tunnel is created, as these URLs change with each ngrok session.
 
-#### Contribution
-Contributions to the project are highly valued. Developers are encouraged to submit pull requests or raise issues on GitHub, with a focus on enhancing code quality, optimizing the audio emotion analysis screen, improving backend integration, or streamlining the ngrok setup process.
-
 #### License
-The application and its components are intended for research and educational purposes. Users must verify the usage terms and conditions associated with the underlying datasets and pre-trained models to ensure compliance with their respective licenses.
+The application and its components are intended for research and educational purposes. Users must verify the usage terms and conditions associated with the underlying datasets and pre-trained models to ensure compliance with their respective licenses. Please check the original main folder license for further details.
