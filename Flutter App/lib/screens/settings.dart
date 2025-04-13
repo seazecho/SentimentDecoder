@@ -73,7 +73,6 @@ class _SettingsState extends State<Settings> {
         children: [
           const SizedBox(height: 16),
 
-          // App Theme
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -99,7 +98,6 @@ class _SettingsState extends State<Settings> {
 
           const Divider(),
 
-          // History Settings
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -159,7 +157,6 @@ class _SettingsState extends State<Settings> {
 
           const Divider(),
 
-          // Language Settings
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -207,8 +204,6 @@ class _SettingsState extends State<Settings> {
           ),
 
           const Divider(),
-
-          // Analysis Settings
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -246,7 +241,6 @@ class _SettingsState extends State<Settings> {
 
           const Divider(),
 
-          // About Section
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -269,7 +263,7 @@ class _SettingsState extends State<Settings> {
             title: const Text('Privacy Policy'),
             leading: const Icon(Icons.privacy_tip),
             onTap: () {
-              // Navigate to privacy policy
+
             },
           ),
 
