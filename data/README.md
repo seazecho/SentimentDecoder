@@ -1,4 +1,4 @@
-# SVM-Based
+# SVM-Based Speech Emotion Recognition From Audio (Ver.I)
 ## Dataset Information
 This directory is a placeholder for the datasets used in `SentimentDecoder`, a Speech Emotion Recognition (SER) project. The actual audio files are hosted on Google Drive due to their size. Below, you’ll find details about the datasets, their naming convention, and how to access them.
 
