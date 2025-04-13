@@ -19,7 +19,9 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
   String _modelUsed = '';
   bool _isLoading = false;
   bool _hasError = false;
-  String _selectedModel = 'svm'; // Default model will be SVM
+  String _selectedModel = 'svm';
+  bool _showEmoji = false;
+  final _animationDuration = const Duration(milliseconds: 400);
 
   Future<void> _pickAudioFile() async {
     try {
@@ -35,6 +37,7 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
           _audioEmotion = '';
           _modelUsed = '';
           _hasError = false;
+          _showEmoji = false;
         });
       }
     } catch (e) {
@@ -57,6 +60,7 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
       _hasError = false;
       _audioEmotion = '';
       _modelUsed = '';
+      _showEmoji = false;
     });
 
     try {
@@ -73,9 +77,7 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
         ),
       );
 
-
       request.fields['model_type'] = _selectedModel;
-
 
       var streamedResponse = await request.send();
       var response = await http.Response.fromStream(streamedResponse);
@@ -86,6 +88,7 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
         setState(() {
           _audioEmotion = data['audio_emotion'];
           _modelUsed = data['model_used'];
+          _showEmoji = true;
         });
       } else {
         setState(() => _hasError = true);
@@ -103,17 +106,38 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
     }
   }
 
+  String _getEmotionEmoji(String emotion) {
+    switch (emotion.toLowerCase()) {
+      case 'happy':
+      case 'happiness':
+      case 'joy':
+        return '😄✨';
+      case 'sad':
+      case 'sadness':
+        return '😭😞';
+      case 'angry':
+      case 'anger':
+        return '😡🔥';
+      case 'fear':
+      case 'fearful':
+        return '😨👻';
+      case 'surprise':
+      case 'surprised':
+        return '🤯⚡';
+      case 'neutral':
+        return '😶☁️';
+      case 'disgust':
+        return '🤮🤢';
+      default:
+        return '❓';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFffffff),
-        title: const Text(
-          "Audio Emotion Analysis",
-          style: TextStyle(
-            color: Color(0xFF0097A7),
-          ),
-        ),
+        title: const Text("Audio Emotion Analysis"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -125,7 +149,9 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                   side: BorderSide(
-                    color: _hasError ? Colors.red : Colors.grey.shade300,
+                    color: _hasError
+                        ? Theme.of(context).colorScheme.error
+                        : Theme.of(context).dividerColor,
                   ),
                 ),
                 child: Padding(
@@ -135,7 +161,9 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                       Icon(
                         Icons.audio_file,
                         size: 48,
-                        color: _hasError ? Colors.red : const Color(0xFF032B44),
+                        color: _hasError
+                            ? Theme.of(context).colorScheme.error
+                            : Theme.of(context).colorScheme.primary,
                       ),
                       const SizedBox(height: 16),
                       Text(
@@ -143,15 +171,15 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                             ? 'No audio file selected'
                             : 'Selected: $_fileName',
                         style: TextStyle(
-                          color: _hasError ? Colors.red : Colors.black87,
+                          color: _hasError
+                              ? Theme.of(context).colorScheme.error
+                              : Theme.of(context).textTheme.bodyLarge!.color,
                         ),
                       ),
                       const SizedBox(height: 16),
                       ElevatedButton.icon(
                         onPressed: _isLoading ? null : _pickAudioFile,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF87CEEB),
-                          foregroundColor: Color(0xff032B44),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 24,
                             vertical: 12,
@@ -177,13 +205,9 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Select Model:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF0097A7),
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(height: 16),
                       DropdownButtonFormField<String>(
@@ -193,18 +217,18 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                           ),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
-                            vertical: 8,
+                            vertical: 10,
                           ),
                         ),
                         value: _selectedModel,
                         items: const [
                           DropdownMenuItem(
                             value: 'svm',
-                            child: Text('SVM'),
+                            child: Text('Support Vector Machine'),
                           ),
                           DropdownMenuItem(
                             value: 'cnn',
-                            child: Text('CNN'),
+                            child: Text('Convolution Neural Network'),
                           ),
                         ],
                         onChanged: (value) {
@@ -222,7 +246,6 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                 onPressed:
                     _isLoading || _audioFile == null ? null : _analyzeAudio,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0097A7),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -237,7 +260,13 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                           strokeWidth: 2,
                         ),
                       )
-                    : const Text('Analyze Audio'),
+                    : const Text(
+                        'Analyze Audio',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
               ),
               const SizedBox(height: 32),
               if (_audioEmotion.isNotEmpty && !_hasError)
@@ -250,23 +279,44 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Analysis Results:',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          'Detected Emotion: $_audioEmotion',
-                          style: const TextStyle(fontSize: 16),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Detected Emotion: $_audioEmotion',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            AnimatedScale(
+                              scale: _showEmoji ? 1.0 : 0.0,
+                              duration: _animationDuration,
+                              curve: Curves.elasticOut,
+                              child: Text(
+                                _getEmotionEmoji(_audioEmotion),
+                                style: const TextStyle(fontSize: 28),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Model Used: $_modelUsed',
-                          style:
-                              const TextStyle(fontSize: 14, color: Colors.grey),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.6)),
                         ),
                       ],
                     ),
@@ -279,3 +329,4 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
     );
   }
 }
+
