@@ -1,7 +1,7 @@
 # SentimentDecoder [Android App (G-Drive Link )](https://www.surrey.ac.uk/speech-music-identity-emotion-database-savee)  
 **A Speech Emotion Recognition Project using audio feature extraction with SVM & CNN models, integrated into an app.**
 
-##About the App
+## About the App
 `SentimentDecoder` is a Flutter-based Android application designed for real-time speech and text emotion recognition. Integrated with a Flask backend, it employs Support Vector Machine (SVM) and Convolutional Neural Network (CNN) models to classify emotions such as happiness, sadness, and anger from audio inputs, using features like MFCCs and Mel-spectrograms. Additionally, it utilizes RoBERTa for text analysis to detect nuanced emotions, enhancing applications in AI-driven communication and emotional analytics.
 
 ## Project Overview
