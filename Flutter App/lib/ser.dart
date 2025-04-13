@@ -19,7 +19,7 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
   String _modelUsed = '';
   bool _isLoading = false;
   bool _hasError = false;
-  String _selectedModel = 'svm'; // Default model is SVM
+  String _selectedModel = 'svm'; // Default model will be SVM
 
   Future<void> _pickAudioFile() async {
     try {
@@ -60,14 +60,12 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
     });
 
     try {
-      // Create multipart request
       var request = http.MultipartRequest(
         'POST',
         Uri.parse(
             'https://better-shiner-actively.ngrok-free.app/classify_audio'),
       );
 
-      // Add the audio file
       request.files.add(
         await http.MultipartFile.fromPath(
           'audio',
@@ -75,10 +73,10 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
         ),
       );
 
-      // Add model type parameter
+
       request.fields['model_type'] = _selectedModel;
 
-      // Send the request
+
       var streamedResponse = await request.send();
       var response = await http.Response.fromStream(streamedResponse);
 
