@@ -1,3 +1,4 @@
+## App Requirements
 This repository contains the source code for a Flutter-based mobile application under `SentimentDecoder/Flutter App/`, designed to provide a cross-platform interface for speech emotion recognition and sentiment analysis. The application leverages a backend server for processing audio inputs and delivering detailed emotion and sentiment insights, optimized for deployment on both iOS and Android platforms.
 
 #### Project Structure
