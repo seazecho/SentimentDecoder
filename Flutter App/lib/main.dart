@@ -34,7 +34,6 @@ class MyAppExt extends StatefulWidget {
   State<MyAppExt> createState() => _MyAppExtState();
 }
 
-// Update the _MyAppExtState class in main.dart to include the toggle functionality
 class _MyAppExtState extends State<MyAppExt> {
   String buttonName = "History";
   late stt.SpeechToText _speech;
@@ -42,7 +41,6 @@ class _MyAppExtState extends State<MyAppExt> {
   String _transcription = "Tap to decode emotions!";
   String _emotion = "";
   late TextEditingController _controller;
-  // Add a new state variable to track which analysis mode is active
   bool _isAudioMode = false;
 
   @override
@@ -54,12 +52,11 @@ class _MyAppExtState extends State<MyAppExt> {
 
   @override
   void dispose() {
-    _controller.dispose(); // Dispose the controller when done
+    _controller.dispose();
     super.dispose();
   }
 
   Future<void> sendToApi(String _transcription) async {
-    // Existing implementation
     try {
       final body = jsonEncode({'text': _transcription});
       print('Request body: $body');
@@ -88,7 +85,6 @@ class _MyAppExtState extends State<MyAppExt> {
     }
   }
 
-  // Toggle between text and audio analysis modes
   void _toggleAnalysisMode() {
     setState(() {
       _isAudioMode = !_isAudioMode;
@@ -99,7 +95,7 @@ class _MyAppExtState extends State<MyAppExt> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).unfocus(); // Dismiss the keyboard and unfocus
+        FocusScope.of(context).unfocus();
       },
       child: Scaffold(
         backgroundColor: const Color(0xffffffff),
@@ -155,7 +151,7 @@ class _MyAppExtState extends State<MyAppExt> {
                   'Home',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7), // Matching your app's teal color
+                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -172,7 +168,7 @@ class _MyAppExtState extends State<MyAppExt> {
                   'Audio Analysis',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7), // Matching your app's teal color
+                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -190,7 +186,7 @@ class _MyAppExtState extends State<MyAppExt> {
                   'History',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7), // Matching your app's teal color
+                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -207,7 +203,7 @@ class _MyAppExtState extends State<MyAppExt> {
                   'About',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7), // Matching your app's teal color
+                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -223,7 +219,6 @@ class _MyAppExtState extends State<MyAppExt> {
         ),
         body: Column(
           children: [
-            // Add toggle switch below AppBar
             Container(
               color: const Color.fromARGB(255, 255, 255, 255),
               padding:
@@ -260,7 +255,6 @@ class _MyAppExtState extends State<MyAppExt> {
               ),
             ),
 
-            // Conditional rendering based on the toggle state
             Expanded(
               child: _isAudioMode
                   ? const AudioEmotionAnalysis()
@@ -268,7 +262,7 @@ class _MyAppExtState extends State<MyAppExt> {
                       child: Container(
                         height: MediaQuery.of(context).size.height -
                             AppBar().preferredSize.height -
-                            56, // Account for toggle height
+                            56,
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -344,11 +338,11 @@ class _MyAppExtState extends State<MyAppExt> {
                                           ? [
                                               Colors.green,
                                               Colors.blue
-                                            ] // Gradient when listening
+                                            ] 
                                           : [
                                               Colors.black,
                                               Colors.black
-                                            ], // Solid black otherwise
+                                            ],
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
                                     ).createShader(bounds),
