@@ -34,7 +34,7 @@ All datasets are renamed to follow a unified RAVDESS naming convention, where th
 - 7: Disgust  
 - 8: Surprised  
 
-"Calm" (2) and "surprised" (8) are excluded from training.
+"Calm" (2) and "Surprised" (8) are excluded from training cause of sample imbalance over huge number of files.
 
 ##### ACCESSING THE DATASETS
 The renamed datasets are hosted in a Google Drive folder:  
