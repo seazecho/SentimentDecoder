@@ -1,26 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class History extends StatelessWidget {
-//   const History({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         centerTitle: true,
-//         title: const Text(
-//           "History",
-//           style: TextStyle(
-//             fontSize: 20,
-//             color: Color.fromARGB(255, 0, 171, 228),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -68,7 +45,6 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
             .map((item) => json.decode(item) as Map<String, dynamic>)
             .toList();
 
-        // Sort by timestamp (newest first)
         _textHistory.sort(
             (a, b) => (b['timestamp'] as int).compareTo(a['timestamp'] as int));
         _audioHistory.sort(
