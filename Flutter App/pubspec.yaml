@@ -1,8 +1,7 @@
-name: sentiment_infant
-description: "A new Flutter project."
-publish_to: 'none'
-
-version: 1.0.0+1
+name: sentiment_decoder
+description: "A speech and text emotion recognition app."
+publish_to: 'none' 
+version: 1.2.0
 
 environment:
   sdk: ">=3.5.4 <4.0.0" 
@@ -19,9 +18,10 @@ dependencies:
   http: ^1.3.0
   file_picker: ^5.2.0
   path: ^1.8.0
-  shared_preferences: ^2.2.2
   intl: ^0.18.1
   url_launcher: ^6.2.2
+  provider: ^6.0.5
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -33,3 +33,4 @@ flutter:
 
   assets:
     - images/ 
+    - assets/images/appstore.png
