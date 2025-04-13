@@ -57,7 +57,7 @@ The project extracts Mel-spectrograms from audio files, normalizes them, and tra
 
 #### PROJECT STRUCTURE
 - **`CNN_4_Datasets_No(Calm_&_Surprised)_V2_Latest.ipynb`**: Main notebook with code and results.  
-- **`these images** contains training visualizations (`accuracy.png`, `confusion_matrix.png`, `epochs.png`).  
+- **`these images`** contains training visualizations (`accuracy.png`, `confusion_matrix.png`, `epochs.png`).  
 - **`cnn_model.h5`**: Trained model (download from Google Drive link).
 
 #### USAGE
