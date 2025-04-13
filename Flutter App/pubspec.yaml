@@ -1,11 +1,11 @@
 name: sentiment_infant
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.5.4 <4.0.0" # Updated to ensure compatibility with Dart 3
+  sdk: ">=3.5.4 <4.0.0" 
 
 dependencies:
   flutter:
@@ -32,4 +32,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/ # Ensure this directory exists in your project
+    - images/ 
