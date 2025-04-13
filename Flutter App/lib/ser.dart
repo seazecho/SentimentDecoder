@@ -63,7 +63,7 @@ class _AudioEmotionAnalysisState extends State<AudioEmotionAnalysis> {
       var request = http.MultipartRequest(
         'POST',
         Uri.parse(
-            'https://better-shiner-actively.ngrok-free.app/classify_audio'),
+            'https://(enter your sever name: I used ngrok static servers, which do port forwarding which might help for free.)/classify_audio'),
       );
 
       request.files.add(
