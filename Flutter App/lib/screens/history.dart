@@ -94,14 +94,14 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
           Icon(
             Icons.history,
             size: 80,
-            color: Colors.grey[400],
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
           ),
           const SizedBox(height: 16),
           Text(
             message,
             style: TextStyle(
               fontSize: 18,
-              color: Colors.grey[600],
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
             ),
             textAlign: TextAlign.center,
           ),
@@ -236,12 +236,12 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 233, 241, 250),
+                color: Theme.of(context).colorScheme.surfaceVariant,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.audio_file,
-                color: Color.fromARGB(255, 0, 171, 228),
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             title: Text(fileName),
@@ -288,7 +288,7 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
       case 'neutral':
         return Colors.grey;
       default:
-        return const Color.fromARGB(255, 0, 171, 228);
+        return Theme.of(context).colorScheme.primary;
     }
   }
 
@@ -296,17 +296,11 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 233, 241, 250),
-        title: const Text(
-          "History",
-          style: TextStyle(
-            color: Color.fromARGB(255, 0, 171, 228),
-          ),
-        ),
+        title: const Text("History"),
         bottom: TabBar(
           controller: _tabController,
-          labelColor: const Color.fromARGB(255, 0, 171, 228),
-          indicatorColor: const Color.fromARGB(255, 0, 171, 228),
+          labelColor: Theme.of(context).colorScheme.primary,
+          indicatorColor: Theme.of(context).colorScheme.primary,
           tabs: const [
             Tab(text: "Text Analysis"),
             Tab(text: "Audio Analysis"),
@@ -324,6 +318,10 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
+                  backgroundColor:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? const Color(0xFF1A2525)
+                          : Colors.white,
                   title: const Text('Clear History'),
                   content: Text(_tabController.index == 0
                       ? 'Are you sure you want to clear all text analysis history?'
