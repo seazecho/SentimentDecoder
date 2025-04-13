@@ -1,28 +1,36 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sentiment_infant/screens/about.dart';
 import 'package:sentiment_infant/screens/history.dart';
 import 'package:sentiment_infant/screens/settings.dart';
 import 'package:sentiment_infant/ser.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:http/http.dart' as http;
+import 'theme_notifier.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   MyApp({super.key});
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
 
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyAppExt(),
+    return Consumer<ThemeNotifier>(
+      builder: (context, themeNotifier, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: themeNotifier.themeData,
+          home: const MyAppExt(),
+        );
+      },
     );
   }
 }
@@ -98,33 +106,32 @@ class _MyAppExtState extends State<MyAppExt> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: const Color(0xffffffff),
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           centerTitle: true,
           actions: [
             IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const Settings(),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.settings))
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const Settings(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings),
+            ),
           ],
           title: GestureDetector(
             onTap: () {
               Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyAppExt()),
-                  (route) => false);
+                context,
+                MaterialPageRoute(builder: (context) => const MyAppExt()),
+                (route) => false,
+              );
             },
             child: const Text(
               "SentimentDecoder",
               style: TextStyle(
                 fontSize: 25,
-                color: Color(0xFF0097A7),
               ),
             ),
           ),
@@ -133,14 +140,14 @@ class _MyAppExtState extends State<MyAppExt> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
+              DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Color(0xFF00ABE4),
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
                 child: Text(
                   'Menu',
                   style: TextStyle(
-                    color: Color(0xFFFFFFFF),
+                    color: Theme.of(context).colorScheme.onSecondary,
                     fontSize: 25,
                   ),
                 ),
@@ -151,7 +158,6 @@ class _MyAppExtState extends State<MyAppExt> {
                   'Home',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -168,7 +174,6 @@ class _MyAppExtState extends State<MyAppExt> {
                   'Audio Analysis',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -186,7 +191,6 @@ class _MyAppExtState extends State<MyAppExt> {
                   'History',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -203,7 +207,6 @@ class _MyAppExtState extends State<MyAppExt> {
                   'About',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0097A7),
                   ),
                 ),
                 onTap: () {
@@ -220,41 +223,28 @@ class _MyAppExtState extends State<MyAppExt> {
         body: Column(
           children: [
             Container(
-              color: const Color.fromARGB(255, 255, 255, 255),
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text(
+                  Text(
                     'Text',
-                    style: TextStyle(
-                      color: Color(0xFF0097A7),
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Switch(
                     value: _isAudioMode,
                     onChanged: (value) {
                       _toggleAnalysisMode();
                     },
-                    activeColor: const Color.fromARGB(255, 255, 99, 99),
-                    activeTrackColor: const Color.fromARGB(255, 211, 245, 255),
-                    inactiveThumbColor: const Color(0xFF0097A7),
-                    inactiveTrackColor:
-                        const Color.fromARGB(255, 229, 249, 255),
                   ),
-                  const Text(
+                  Text(
                     'Audio',
-                    style: TextStyle(
-                      color: Color(0xFF0097A7),
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ],
               ),
             ),
-
             Expanded(
               child: _isAudioMode
                   ? const AudioEmotionAnalysis()
@@ -311,18 +301,23 @@ class _MyAppExtState extends State<MyAppExt> {
                                     shape: BoxShape.circle,
                                     gradient: RadialGradient(
                                       colors: [
-                                        const Color(0xFF007AFD)
+                                        Theme.of(context)
+                                            .colorScheme
+                                            .primary
                                             .withOpacity(0.5),
-                                        Colors.white,
+                                        Theme.of(context).colorScheme.surface,
                                       ],
                                       radius: 0.5,
                                     ),
                                   ),
-                                  child: const Center(
+                                  child: Center(
                                     child: Icon(
                                       Icons.mic_none_rounded,
                                       size: 50,
-                                      color: Color.fromARGB(255, 30, 114, 211),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(0.7),
                                     ),
                                   ),
                                 ),
@@ -336,12 +331,20 @@ class _MyAppExtState extends State<MyAppExt> {
                                     shaderCallback: (bounds) => LinearGradient(
                                       colors: _isListening
                                           ? [
-                                              Colors.green,
-                                              Colors.blue
-                                            ] 
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .primary
+                                            ]
                                           : [
-                                              Colors.black,
-                                              Colors.black
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface,
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface
                                             ],
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
@@ -350,11 +353,13 @@ class _MyAppExtState extends State<MyAppExt> {
                                       _transcription.isNotEmpty
                                           ? _transcription
                                           : "Tap to decode emotions!",
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -363,12 +368,12 @@ class _MyAppExtState extends State<MyAppExt> {
                                     _emotion.isNotEmpty
                                         ? "Emotion: $_emotion"
                                         : "",
-                                    style: const TextStyle(
-                                      color: Color(0xFF0097A7),
-                                      fontSize: 16,
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontStyle: FontStyle.italic,
+                                        ),
                                   ),
                                   const SizedBox(height: 75),
                                   Padding(
@@ -386,14 +391,6 @@ class _MyAppExtState extends State<MyAppExt> {
                                         sendToApi(value);
                                       },
                                       decoration: InputDecoration(
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                          borderSide: const BorderSide(
-                                            color: Colors.teal,
-                                            width: 2.0,
-                                          ),
-                                        ),
                                         hintText:
                                             "Try typing here, if that's your thing",
                                         border: OutlineInputBorder(
@@ -417,10 +414,7 @@ class _MyAppExtState extends State<MyAppExt> {
                               const Spacer(),
                               OutlinedButton(
                                 style: OutlinedButton.styleFrom(
-                                  foregroundColor: const Color(0xFF0097A7),
                                   shape: const StadiumBorder(),
-                                  side: const BorderSide(
-                                      width: 1, color: Color(0xFF0097A7)),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).push(
