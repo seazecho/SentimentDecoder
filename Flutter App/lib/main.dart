@@ -63,7 +63,7 @@ class _MyAppExtState extends State<MyAppExt> {
 
       final response = await http.post(
         Uri.parse(
-            'https://better-shiner-actively.ngrok-free.app/classify_text'),
+            'https://(enter your sever name: I used ngrok static servers, which do port forwarding which might help for free.)/classify_text'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'text': _transcription}),
       );
