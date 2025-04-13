@@ -1,4 +1,4 @@
-# Server Components
+#  Server Components
 
 This repository contains the server-side components for the SentimentDecoder Flutter App, located under `SentimentDecoder/Flutter App/server/`. These components support the application's speech emotion recognition and sentiment analysis functionalities by processing audio inputs and delivering results to the Flutter frontend. The server integrates with a Convolutional Neural Network (CNN) model derived from the `SentimentDecoder/CNN-based/` project, enhancing its emotion recognition capabilities.
 
