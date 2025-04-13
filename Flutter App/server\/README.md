@@ -17,8 +17,7 @@ The server operates locally and is exposed to the internet using ngrok for port 
 ### Development Notes
 - The server requires a Python environment with libraries such as `pickle` for deserialization and `numpy` for numerical operations. Install these dependencies using `pip install pickle numpy`.
 - The `cnn_model.h5`, sourced from the CNN-based project, was trained on Mel-spectrogram features extracted from 13,363 files across four datasets. Download and place it in the `server/` directory, updating `app.py` to incorporate it for improved performance.
-- Ngrok configuration is critical for external access. Update the Flutter app's backend endpoint to the new ngrok URL each time a session restarts, as the URL changes dynamically.
-- Securely manage the `scaler.pkl`, `ser_model.pkl`, and `cnn_model.h5` files to protect intellectual property and ensure data privacy, particularly in a production environment.
+- Ngrok configuration is critical for external access. Update the Flutter app's backend endpoint to the new ngrok URL each time a session restarts, as the URL changes dynamically or just use a static ngrok domain just like I used, it's free too.
 
 ### License
 The application and its components are intended for research and educational purposes. Users must verify the usage terms and conditions associated with the underlying datasets and pre-trained models to ensure compliance with their respective licenses. Please check the original main folder license for further details.
