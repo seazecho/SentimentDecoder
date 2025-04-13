@@ -1,5 +1,5 @@
 # SentimentDecoder
-**Speech Emotion Recognition Using SVM and Audio Feature Extraction**
+**A Speech Emotion Recognition model using SVM & CNN and audio feature extraction.**
 
 ## Project Overview
 `SentimentDecoder` is a machine learning project designed to classify emotions from speech audio files. Built as a showcase of audio signal processing and supervised learning, it leverages a Support Vector Machine (SVM) to predict eight distinct emotions—neutral, calm, happy, sad, angry, fearful, disgust, and surprised—from `.wav` files. This project was developed in Google Colab, integrating three renamed datasets (RAVDESS, SAVEE, and TESS) to train and evaluate the model.
