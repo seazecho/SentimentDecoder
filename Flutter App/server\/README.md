@@ -4,7 +4,8 @@ This repository contains the server-side components for the SentimentDecoder Flu
 - **`app.py`**: The primary Python script that serves as the backend server, managing API requests from the Flutter app, processing audio data, and interfacing with pre-trained models for emotion recognition.
 - **`scaler.pkl`**: A serialized Python pickle file containing the data scaling model, essential for normalizing audio features to ensure consistent preprocessing before model inference.
 - **`ser_model.pkl`**: A pre-trained speech emotion recognition model stored as a pickle file, which performs the core analysis of audio inputs to identify emotions.
-- **CNN Model Integration**: The repository leverages the `cnn_model.h5` from the CNN-based Speech Emotion Recognition project. This model, trained on a combined dataset of RAVDESS, SAVEE, TESS, and CREMA-D (excluding "calm" and "surprised" due to sample imbalance), achieved a test accuracy of 69.01% over 50 epochs. It is available for download and integration to augment the server's capabilities. Access it at [Google Drive - CNN Model](https://drive.google.com/file/d/1WLBT9jHYIqRV51JURt9rl2Eh6JsSLov4/view?usp=drive_link).
+- **CNN Model Integration**: The repository leverages the `cnn_model.h5` from the CNN-based Speech Emotion Recognition project. This model, trained on a combined dataset of RAVDESS, SAVEE, TESS, and CREMA-D (excluding "calm" and "surprised" due to sample imbalance), achieved a test accuracy of 69.01% over 50 epochs. It is available for download and integration to augment the server's capabilities.
+- Access it at [Google Drive - CNN Model](https://drive.google.com/file/d/1WLBT9jHYIqRV51JURt9rl2Eh6JsSLov4/view?usp=drive_link).
 
 #### Usage
 The server operates locally and is exposed to the internet using ngrok for port forwarding. To utilize the server:
