@@ -120,4 +120,4 @@ pip install librosa numpy scikit-learn joblib seaborn matplotlib tensorflow
 ## Notes
 - **Size**: Datasets (~1.6GB for CNN, varying for SVM) and models (~60MB for CNN, smaller for SVM) are hosted externally.
 - **Renaming**: Files were manually aligned with RAVDESS labels.
-- **License**: Intended for research and educational purposes. Verify terms for datasets and models. Check the original main folder license for further details.
+- **License**: Feel free to use or modify this project for any purpose, but please don’t distribute an identical version without my permission. Platform terms (e.g., GitHub) may apply.
