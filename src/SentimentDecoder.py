@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import librosa
 import numpy as np
 import os
