@@ -26,7 +26,7 @@ class About extends StatelessWidget {
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: const Text("Chill, I’m cool!"),
+                          child: const Text("Chill, I'm cool!"),
                         ),
                       ],
                     ),
@@ -182,7 +182,7 @@ class About extends StatelessWidget {
                             style: TextStyle(color: Colors.white)),
                       ),
                       title: const Text("Chetan Mirashi"),
-                      subtitle: const Text("Grand Mood Maestro"),
+                      subtitle: const Text("Senior Mouse Clicker"),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -234,7 +234,7 @@ class About extends StatelessWidget {
                             style: TextStyle(color: Colors.white)),
                       ),
                       title: const Text("Sanish Naik"),
-                      subtitle: const Text("Server Tickler"),
+                      subtitle: const Text("“It Works on My Machine” Expert"),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -286,7 +286,7 @@ class About extends StatelessWidget {
                             style: TextStyle(color: Colors.white)),
                       ),
                       title: const Text("Sumit Naik"),
-                      subtitle: const Text("Algorithm Jester"),
+                      subtitle: const Text("Wi-Fi Reconnector"),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -298,11 +298,11 @@ class About extends StatelessWidget {
                                 builder: (context) => AlertDialog(
                                   title: const Text("Email Panic!"),
                                   content: const Text(
-                                      "Sumit’s email’s freaking out—thinks it’s getting sad vibes! Wanna send a cheery note?"),
+                                      "Sumit's email's freaking out—thinks it's getting sad vibes! Wanna send a cheery note?"),
                                   actions: [
                                     TextButton(
                                       onPressed: () => Navigator.pop(context),
-                                      child: const Text("I’ll cheer it up!"),
+                                      child: const Text("I'll cheer it up!"),
                                     ),
                                   ],
                                 ),
@@ -338,7 +338,7 @@ class About extends StatelessWidget {
                             style: TextStyle(color: Colors.white)),
                       ),
                       title: const Text("Muhinodin Patil"),
-                      subtitle: const Text("Data Whisperer"),
+                      subtitle: const Text("Head Googler of Problems"),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
